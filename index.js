@@ -17,6 +17,24 @@ app.get(["/", "/index", "/home"], function(req, res){
     res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
 })
 
+app.get(["/hello/:id"], function(req, res){
+    //res.sendFile(__dirname+"/index.html");
+    //console.log(obImagini);
+    //res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
+    console.log("a intrat!")
+
+    const axios = require('axios')
+    axios
+    .get('http://10.81.135.17:8081/hello')
+    .then(res2 => {
+        console.log(`statusCode: ${res2.status}`)
+        console.log(res2.data)
+        res.render("pagini/bro", {data:res2.data}) 
+    })
+    .catch(error => {
+        console.error(error)
+    })
+})
 
 app.get("/*.ejs", function(req, res){
     //res.sendFile(__dirname+"/index1.html");
@@ -41,6 +59,8 @@ app.get("/ceva", function(req, res, next){
     console.log("2");
     next();
 })
+
+
 
 
 app.get("/*", function(req, res){
