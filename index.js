@@ -1,7 +1,7 @@
 const express= require("express");
 const fs=require("fs");
 const sharp=require("sharp");
-const ip1 = 'http://10.81.135.17:8081/'
+const ipAgent = 'http://10.81.135.17:8081/' /// ip agent
 
 app= express();
 
@@ -15,11 +15,10 @@ console.log("Director proiect:",__dirname);
 app.get(["/", "/index", "/home"], function(req, res){
     //res.sendFile(__dirname+"/index.html");
     console.log(obImagini);
-
-    res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
+    res.render("pagini/index", {ipAgent:ipAgent,ip:req.ip, imagini:obImagini.imagini}); /// req.ip = ip Utlilizator
 })
 
-app.get(["/bro"], function(req, res){
+app.get(["/bro/:ipAgent"], function(req, res){
     //res.sendFile(__dirname+"/index.html");
     //console.log(obImagini);
     //res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
@@ -27,11 +26,11 @@ app.get(["/bro"], function(req, res){
 
     const axios = require('axios')
     axios
-    .get(ip1 + 'listDir')
+    .get(req.params.ipAgent + 'listDir')
     .then(res2 => {
         console.log(`statusCode: ${res2.status}`)
         console.log(res2.data)
-        res.render("pagini/bro", {data:res2.data}) 
+        res.render("pagini/bro", {ipAgent:req.params.ipAgent, data:res2.data}) 
     })
     .catch(error => {
         console.error(error)

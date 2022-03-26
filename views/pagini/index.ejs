@@ -120,26 +120,27 @@
     <main>
         <div id="grid-pagina">
             <section id="welcome">
-
-
                 
-                <button type="button" onclick="sampleFunction()" id="btn" >  Button2 </button> 
-               
+                <p></p>
+
                 <script>
                     
-                    function sampleFunction()
-                    {
-                           
-                    }
+
                 </script>
-            
+
+                <a href = "http://10.81.135.28:8080/bro/:<%- locals.ipAgent%>"> 
+                    <button type="button" onclick="sampleFunction()" id="lst" >  Lista </button> 
+                </a>
+                
+                
+                
                 
                 <p class="intro">Vă mulțumim că ne vizitați site-ul. Luați de aici niște biscuiți virtuali. Poftă bună!</p>
                 
                         
                             
 
-                <p> <%- locals.ip %></p>
+                <p> <%- locals.ipAgent %></p>
                 
                 <div id="galerie_statica">   
                 <% for (let imag of locals.imagini){ %>
