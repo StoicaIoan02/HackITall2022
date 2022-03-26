@@ -1,6 +1,7 @@
 const express= require("express");
 const fs=require("fs");
 const sharp=require("sharp");
+const ip1 = 'http://10.81.135.17:8081/'
 
 app= express();
 
@@ -14,10 +15,11 @@ console.log("Director proiect:",__dirname);
 app.get(["/", "/index", "/home"], function(req, res){
     //res.sendFile(__dirname+"/index.html");
     console.log(obImagini);
+
     res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
 })
 
-app.get(["/hello/:id"], function(req, res){
+app.get(["/bro"], function(req, res){
     //res.sendFile(__dirname+"/index.html");
     //console.log(obImagini);
     //res.render("pagini/index", {ip:req.ip, imagini:obImagini.imagini});
@@ -25,7 +27,7 @@ app.get(["/hello/:id"], function(req, res){
 
     const axios = require('axios')
     axios
-    .get('http://10.81.135.17:8081/hello')
+    .get(ip1 + 'listDir')
     .then(res2 => {
         console.log(`statusCode: ${res2.status}`)
         console.log(res2.data)
