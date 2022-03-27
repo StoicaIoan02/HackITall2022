@@ -7,7 +7,12 @@
             function myFunction()
                 {
                     console.log("Acum se ruleaza myjs js din Server");       
-                    document.getElementById("demo").innerHTML = "Paragraph changed.";
+                    document.getElementById("demo").innerHTML = document.getElementById("cer1").value;
+                }
+            function listdir()
+                {
+                    console.log("sample");
+                    window.location = "<%-locals.ipAgent%>/bro?x="+document.getElementById("cer1").value;
                 }
         </script>
         
@@ -22,22 +27,27 @@
                 <input type="text" id="fname" name="fname" value="admin"><br>
                 <label for="parola">Parola</label><br>
                 <input type="text" id="parola" name="parola" value="admin"><br>
-                <label for="parola">IP</label><br>
-                <input type="text" id="ipAgent" name="ipAgent" value="http://10.81.135.28:8081/"><br>
+                <label for="parola">IP agent</label><br>
+                <input type="text" id="ipAgent" name="ipAgent" value="<%-locals.ipAgent%>"><br>
                 
                 <input type="submit" value="Submit"><br><br>
             </form> 
             
             <p>Comenzi:</p>
-            <a href = "http://10.81.135.28:8081/bro"> 
-                <button type="button" onclick="sampleFunction()" id="lst" >  Listare fisiere/foldere </button> 
-            </a>
 
-            <br>
+            <form action="/action_page.php">
+                <label for="cer1">Cale cerinta 1:</label><br>
+                <input type="text" id="cer1" name="cer1" value="~/Desktop/"><br>
+            </form> 
+            <button type="button" onclick="listdir()" id="lst" >  Listare fisiere/foldere </button> 
+
             
-            <button type="button" onclick="myFunction()" id="lst" >  myFunction </button> 
-             
-            <p id="demo"> De schimbat1 </p> 
+
+            
+            
+            <!-- <button type="button" onclick="myFunction()" id="lst" >  myFunction </button>  -->
+
+            <!-- <p id="demo"> De schimbat1 </p>  -->
         </main>
     </body>
 </html>

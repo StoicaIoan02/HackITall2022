@@ -1,8 +1,8 @@
 const express= require("express");
 app = express();
 app.set("view engine","ejs");
-ipAgent = 'http://10.81.135.17:8081/'
-ipServer = 'http://10.81.135.28:8081'
+ipAgent = 'http://10.81.135.28:8081'
+ipServer = 'http://10.81.135.28:8080'
 
 //'http://10.81.135.17:8081/'  ip agent
 console.log("Director proiect:",__dirname);
