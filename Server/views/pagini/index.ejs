@@ -2,18 +2,65 @@
 <html  lang="ro">
     <head>
         <title>Titlu server</title>
+        <script>
+            function myFunction()
+                {
+                    console.log("Acum se ruleaza myjs js din Server");       
+                    document.getElementById("demo").innerHTML = document.getElementById("cer1").value;
+                }
+            function list(cer)
+                {
+                    user=document.getElementById("fname").value;
+                    pass=document.getElementById("parola").value;
+                    path=document.getElementById("cer1").value;
+                    agentIP=document.getElementById("ipAgent").value;
+                    file=document.getElementById("cer4").value;
+                    window.location = agentIP + "/bro?u=" + user + "&p=" + pass + "&c=" + cer + "&x=" + path + "&f=" + file;
+                }
+        </script>
+        
     </head>
     <body>
         <main>
             <p>Continut server</p>
-            <a href = "http://10.81.135.28:8081/bro"> 
-                <button type="button" onclick="sampleFunction()" id="lst" >  Listare fisere/foldere </button> 
-            </a>
-            <p> <%- locals.data %> </p>
-            <p> Esti in server. </p>
-            <a href = "http://10.81.135.28:8080/bro"> 
-                <p> Lista </p> 
-            </a>                
+            
+            <p>Login: </p>
+            <form action="/action_page.php">
+                <label for="fname">Nume</label><br>
+                <input type="text" id="fname" name="fname" value="admin"><br>
+                <label for="parola">Parola</label><br>
+                <input type="text" id="parola" name="parola" value="admin"><br>
+                <label for="parola">IP agent</label><br>
+                <input type="text" id="ipAgent" name="ipAgent" value="<%-locals.ipAgent%>"><br>
+                
+                <input type="submit" value="Submit"><br><br>
+            </form> 
+            
+            <p>Comenzi:</p>
+
+            <form action="/action_page.php">
+                <label for="cer1">Cale:</label><br>
+                <input type="text" id="cer1" name="cer1" value="~/Desktop/"><br>
+                <label for="cer4">Nume fisier/folder:</label><br>
+                <input type="text" id="cer4" name="cer4" value="New folder"><br>
+            </form> 
+            <button type="button" onclick="list(1)" id="lst" >  1. Listare fisiere/foldere </button>
+            <br>
+            <button type="button" onclick="list(2)" id="view" >  2. Afisare continut fisier </button> 
+            <br>
+            <button type="button" onclick="list(3)" id="search" >  3. Cautare </button> 
+            <br>
+            <button type="button" onclick="list(41)" id="createFile" >  4.1 Creare fisier</button> 
+            <button type="button" onclick="list(42)" id="createFolder" >  4.2 Creare folder</button> 
+            
+
+            
+
+            
+            
+            <!-- <button type="button" onclick="myFunction()" id="lst" >  myFunction </button>  -->
+
+            <!-- <p id="demo"> De schimbat1 </p>  -->
         </main>
     </body>
 </html>

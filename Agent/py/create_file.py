@@ -9,3 +9,6 @@ if not os.path.exists(path):
 f=open(filepath, "a")
 
 f.close()
+f = open("output.ejs", "w")
+f.write("File created")
+f.close()
