@@ -2,18 +2,52 @@
 <html  lang="ro">
     <head>
         <title>Titlu server</title>
+        <script>
+            
+            function myFunction()
+                {
+                    console.log("Acum se ruleaza myjs js din Server");       
+                    document.getElementById("demo").innerHTML = document.getElementById("cer1").value;
+                }
+            function listdir()
+                {
+                    console.log("sample");
+                    window.location = "<%-locals.ipAgent%>/bro?x="+document.getElementById("cer1").value;
+                }
+        </script>
+        
     </head>
     <body>
         <main>
             <p>Continut server</p>
-            <a href = "http://10.81.135.28:8081/bro"> 
-                <button type="button" onclick="sampleFunction()" id="lst" >  Listare fisere/foldere </button> 
-            </a>
-            <p> <%- locals.data %> </p>
-            <p> Esti in server. </p>
-            <a href = "http://10.81.135.28:8080/bro"> 
-                <p> Lista </p> 
-            </a>                
+            
+            <p>Login: </p>
+            <form action="/action_page.php">
+                <label for="fname">Nume</label><br>
+                <input type="text" id="fname" name="fname" value="admin"><br>
+                <label for="parola">Parola</label><br>
+                <input type="text" id="parola" name="parola" value="admin"><br>
+                <label for="parola">IP agent</label><br>
+                <input type="text" id="ipAgent" name="ipAgent" value="<%-locals.ipAgent%>"><br>
+                
+                <input type="submit" value="Submit"><br><br>
+            </form> 
+            
+            <p>Comenzi:</p>
+
+            <form action="/action_page.php">
+                <label for="cer1">Cale cerinta 1:</label><br>
+                <input type="text" id="cer1" name="cer1" value="~/Desktop/"><br>
+            </form> 
+            <button type="button" onclick="listdir()" id="lst" >  Listare fisiere/foldere </button> 
+
+            
+
+            
+            
+            <!-- <button type="button" onclick="myFunction()" id="lst" >  myFunction </button>  -->
+
+            <!-- <p id="demo"> De schimbat1 </p>  -->
         </main>
     </body>
 </html>

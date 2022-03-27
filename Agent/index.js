@@ -1,8 +1,10 @@
-const express = require("express");
+var express = require("express");
 const exec = require('node-async-exec');
 
-app= express();
+var app= express();
 app.set("view engine","ejs");
+
+app.locals.myVar = 5;
 
 console.log("Director proiect:",__dirname);
 
@@ -13,8 +15,10 @@ app.get(["/", "/index", "/home"], function(req, res){
 app.get(["/bro"], function(req, res){
     const { exec } = require('child_process');
     console.log("Cerere agent bro");
+
+    console.log(req.query.x);
     
-    exec('python3 py/listdir.py\ > py/output.ejs', (error, stdout, stderr) => {
+    exec("python3 py/listdir.py "+ req.query.x + " > py/output.ejs", (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
@@ -22,13 +26,7 @@ app.get(["/bro"], function(req, res){
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
         res.render("../py/output.ejs", {ip:req.ip }) ;
-        });
-
-
-    
-            
-        
-    
+        });    
 })
 
 app.listen(8081);
