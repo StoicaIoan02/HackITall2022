@@ -1,7 +1,8 @@
 import os
+import sys
 f = open("task1.txt", "w")
-path = "C://Users//Vlad//Desktop//HackITall2022//Agent"
-dir_list=os.listdir(path)
+
+dir_list=os.listdir(sys.argv[1])
 for element in dir_list:
     f.write(element+"\n")
 f.close()

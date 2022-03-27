@@ -1,8 +1,4 @@
-index.html
-index.js
-node_modules
-package-lock.json
-package.json
-py
-resurse
-views
+.git
+Agent
+README.md
+Server
