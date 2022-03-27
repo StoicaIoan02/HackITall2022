@@ -1,6 +1,8 @@
 var express = require("express");
 const exec = require('node-async-exec');
-
+var json = require('./database.json');
+console.log(json.user);
+//const login={"admin":"admin"};
 var app= express();
 app.set("view engine","ejs");
 
@@ -17,7 +19,7 @@ app.get(["/bro"], function(req, res){
     console.log("Cerere agent bro");
 
     console.log(req.query.x);
-    if(req.query.u=="admin"&&req.query.p=="admin")
+    if(req.query.u==json.user&&req.query.p==json.pass)
     {
         if(req.query.c==1)
             command="listdir.py";
