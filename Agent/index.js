@@ -14,25 +14,21 @@ app.get(["/bro"], function(req, res){
     const { exec } = require('child_process');
     console.log("Cerere agent bro");
     
-    (async () => {
-        try {
-            await exec('python3 views/listdir.py\ > views/output.ejs', (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`exec error: ${error}`);
-                    return;
-                }
-                console.log(`stdout: ${stdout}`);
-                console.error(`stderr: ${stderr}`);
-                });
-        } catch (err) {
-            console.log(err);
+    exec('python3 py/listdir.py\ > py/output.ejs', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return;
         }
-    })()
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+        res.render("../py/output.ejs", {ip:req.ip }) ;
+        });
+
 
     
             
         
-    res.render("output.ejs", {ip:req.ip }) ;
+    
 })
 
 app.listen(8081);
