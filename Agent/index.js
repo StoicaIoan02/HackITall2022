@@ -1,12 +1,11 @@
 var express = require("express");
 const exec = require('node-async-exec');
 var json = require('./database.json');
-console.log(json.user);
+
 //const login={"admin":"admin"};
 var app= express();
 app.set("view engine","ejs");
 
-app.locals.myVar = 5;
 
 console.log("Director proiect:",__dirname);
 
@@ -18,8 +17,10 @@ app.get(["/bro"], function(req, res){
     const { exec } = require('child_process');
     console.log("Cerere agent bro");
 
-    console.log(req.query.x);
-    if(req.query.u==json.user&&req.query.p==json.pass)
+    console.log(json[req.query.u]);
+    console.log(req.query.p);
+
+    if(json[req.query.u] == req.query.p )
     {
         if(req.query.c==1)
             command="listdir.py";
