@@ -3,20 +3,19 @@
     <head>
         <title>Titlu server</title>
         <script>
-            
             function myFunction()
                 {
                     console.log("Acum se ruleaza myjs js din Server");       
                     document.getElementById("demo").innerHTML = document.getElementById("cer1").value;
                 }
-            function listDir()
+            function list(cer)
                 {
-                    console.log("sample");
-                    window.location = "<%-locals.ipAgent%>/bro?c=1&x="+document.getElementById("cer1").value;
-                }
-            function viewContent()
-                {
-                    window.location = "<%-locals.ipAgent%>/bro?c=2&x="+document.getElementById("cer1").value;
+                    user=document.getElementById("fname").value;
+                    pass=document.getElementById("parola").value;
+                    path=document.getElementById("cer1").value;
+                    agentIP=document.getElementById("ipAgent").value;
+                    file=document.getElementById("cer4").value;
+                    window.location = agentIP + "/bro?u=" + user + "&p=" + pass + "&c=" + cer + "&x=" + path + "&f=" + file;
                 }
         </script>
         
@@ -40,11 +39,20 @@
             <p>Comenzi:</p>
 
             <form action="/action_page.php">
-                <label for="cer1">Cale cerinta 1:</label><br>
+                <label for="cer1">Cale:</label><br>
                 <input type="text" id="cer1" name="cer1" value="~/Desktop/"><br>
+                <label for="cer4">Nume fisier/folder:</label><br>
+                <input type="text" id="cer4" name="cer4" value="New folder"><br>
             </form> 
-            <button type="button" onclick="listDir()" id="lst" >  Listare fisiere/foldere </button>
-            <button type="button" onclick="viewContent()" id="lst" >  Listare fisiere/foldere </button> 
+            <button type="button" onclick="list(1)" id="lst" >  1. Listare fisiere/foldere </button>
+            <br>
+            <button type="button" onclick="list(2)" id="view" >  2. Afisare continut fisier </button> 
+            <br>
+            <button type="button" onclick="list(3)" id="search" >  2. Afisare continut fisier </button> 
+            <br>
+            <button type="button" onclick="list(41)" id="createFile" >  4.1 Creare fisier</button> 
+            <button type="button" onclick="list(42)" id="createFolder" >  4.2 Creare folder</button> 
+            
 
             
 
