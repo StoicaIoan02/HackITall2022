@@ -11,6 +11,10 @@ app.get(["/", "/index", "/home"], function(req, res){
     res.render("pagini/index", {ip:req.ip, ipAgent : ipAgent, ipServer: ipServer}); /// req.ip = ip Utlilizator
 })
 
+app.get(["/", "/index", "/home"], function(req, res){
+    res.render("pagini/index", {ip:req.ip, ipAgent : ipAgent, ipServer: ipServer}); /// req.ip = ip Utlilizator
+})
+
 app.listen(8080);
 console.log("A pornit Serverul")
 

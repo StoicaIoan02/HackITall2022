@@ -1,4 +1,0 @@
-.git
-Agent
-README.md
-Server

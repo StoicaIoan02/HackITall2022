@@ -9,10 +9,14 @@
                     console.log("Acum se ruleaza myjs js din Server");       
                     document.getElementById("demo").innerHTML = document.getElementById("cer1").value;
                 }
-            function listdir()
+            function listDir()
                 {
                     console.log("sample");
-                    window.location = "<%-locals.ipAgent%>/bro?x="+document.getElementById("cer1").value;
+                    window.location = "<%-locals.ipAgent%>/bro?c=1&x="+document.getElementById("cer1").value;
+                }
+            function viewContent()
+                {
+                    window.location = "<%-locals.ipAgent%>/bro?c=2&x="+document.getElementById("cer1").value;
                 }
         </script>
         
@@ -39,7 +43,8 @@
                 <label for="cer1">Cale cerinta 1:</label><br>
                 <input type="text" id="cer1" name="cer1" value="~/Desktop/"><br>
             </form> 
-            <button type="button" onclick="listdir()" id="lst" >  Listare fisiere/foldere </button> 
+            <button type="button" onclick="listDir()" id="lst" >  Listare fisiere/foldere </button>
+            <button type="button" onclick="viewContent()" id="lst" >  Listare fisiere/foldere </button> 
 
             
 

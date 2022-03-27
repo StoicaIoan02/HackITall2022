@@ -17,15 +17,18 @@ app.get(["/bro"], function(req, res){
     console.log("Cerere agent bro");
 
     console.log(req.query.x);
-    
-    exec("python3 py/listdir.py "+ req.query.x + " > py/output.ejs", (error, stdout, stderr) => {
+    if(req.query.c==1)
+        command="listdir.py";
+    else if(req.query.c==2)
+        command="viewContent.py";
+    exec("python3 py/" + command + " " + req.query.x, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
         }
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
-        res.render("../py/output.ejs", {ip:req.ip }) ;
+        res.render("../output.ejs", {ip:req.ip }) ;
         });    
 })
 
