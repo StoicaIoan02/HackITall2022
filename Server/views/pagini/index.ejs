@@ -6,14 +6,24 @@
     <body>
         <main>
             <p>Continut server</p>
+            
+            <p>Login: </p>
+            <form action="/action_page.php">
+                <label for="fname">Nume</label><br>
+                <input type="text" id="fname" name="fname" value="admin"><br>
+                <label for="parola">Parola</label><br>
+                <input type="text" id="parola" name="parola" value="admin"><br>
+                <label for="parola">IP</label><br>
+                <input type="text" id="ipAgent" name="ipAgent" value="http://10.81.135.28:8081/"><br>
+                
+                <input type="submit" value="Submit"><br><br>
+            </form> 
+            
+            <p>Comenzi:</p>
             <a href = "http://10.81.135.28:8081/bro"> 
-                <button type="button" onclick="sampleFunction()" id="lst" >  Listare fisere/foldere </button> 
+                <button type="button" onclick="sampleFunction()" id="lst" >  Listare fisiere/foldere </button> 
             </a>
-            <p> <%- locals.data %> </p>
-            <p> Esti in server. </p>
-            <a href = "http://10.81.135.28:8080/bro"> 
-                <p> Lista </p> 
-            </a>                
+                        
         </main>
     </body>
 </html>
