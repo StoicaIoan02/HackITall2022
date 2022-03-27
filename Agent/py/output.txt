@@ -1,1 +1,0 @@
-['index.html', 'index.js', 'node_modules', 'output.txt', 'package-lock.json', 'package.json', 'py', 'resurse', 'views']
