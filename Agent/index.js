@@ -1,8 +1,10 @@
-const express = require("express");
+var express = require("express");
 const exec = require('node-async-exec');
 
-app= express();
+var app= express();
 app.set("view engine","ejs");
+
+app.locals.myVar = 5;
 
 console.log("Director proiect:",__dirname);
 
