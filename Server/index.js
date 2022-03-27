@@ -10,7 +10,7 @@ app.get(["/", "/index", "/home"], function(req, res){
 })
 
 app.listen(8080);
-console.log("A pornit")
+console.log("A pornit Serverul")
 
 
 
